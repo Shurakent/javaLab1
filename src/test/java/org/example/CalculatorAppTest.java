@@ -1,16 +1,18 @@
 package org.example;
-
+import junit.framework.Test;
 import junit.framework.TestCase;
 
 
 /**
  * Unit test for simple App.
  */
-public class CalculatorAppTest
-    extends TestCase
-{
-    CalculatorApp calc = new CalculatorApp();
-
+public class CalculatorAppTest extends TestCase {
+    private CalculatorApp calc;
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        calc = new CalculatorApp();
+    }
     private void testAssertEqualsSum(Double a, Double b, Double expected) {
         assertEquals(expected, calc.sum(a, b));
     }
@@ -36,6 +38,13 @@ public class CalculatorAppTest
     }
     public void testDiv(){
         testAssertEqualsDiv(4.0, 2.0, 2.0);
-        testAssertEqualsDiv(4.0, 0.0, Double.MAX_VALUE);
+    }
+    public void testDivByZero() {
+        try {
+            calc.div(4.0, 0.0); // Ожидается ArithmeticException
+            fail("Expected ArithmeticException to be thrown");
+        } catch (ArithmeticException e) {
+            // Успешный тест, исключение выброшено
+        }
     }
 }
