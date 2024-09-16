@@ -14,6 +14,10 @@ public class CalculatorAppTest
     private void testAssertEqualsSum(Double a, Double b, Double expected) {
         assertEquals(expected, calc.sum(a, b));
     }
+    private void testAssertEqualsSub(Double a, Double b, Double expected) {
+        assertEquals(expected, calc.sub(a, b));
+    }
+
     private void testAssertEqualsMulti(Double a, Double b, Double expected) {
         assertEquals(expected, calc.mul(a, b));
     }
@@ -21,8 +25,11 @@ public class CalculatorAppTest
         assertEquals(expected, calc.div(a, b));
     }
 
-    public void testAdd(){
+    public void testSum(){
         testAssertEqualsSum(2.0, 2.0, 4.0);
+    }
+    public void testSub(){
+        testAssertEqualsSub(2.0, 2.0, 0.0);
     }
     public void testMulti(){
         testAssertEqualsMulti(2.0, 2.0, 4.0);
