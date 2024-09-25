@@ -1,9 +1,6 @@
 package org.example;
 
-/**
- * Hello world!
- *
- */
+
 public class CalculatorApp implements CalculatorAppInterface<Double> {
 
     @Override
@@ -19,7 +16,11 @@ public class CalculatorApp implements CalculatorAppInterface<Double> {
     @Override
     public Double div(Double a, Double b) {
         if (b==0) {
-            throw new ArithmeticException();
+            try {
+                throw new ArithmeticException();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         return a * 1.0 / b;
     }
